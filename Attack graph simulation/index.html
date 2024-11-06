@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attack Graph Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="sidebar">
+        <div class="section-title">Network Nodes</div>
+        <div class="node-item" draggable="true" data-type="database">Database</div>
+        <div class="node-item" draggable="true" data-type="server1">Server 1</div>
+        <div class="node-item" draggable="true" data-type="server2">Server 2</div>
+        <div class="node-item" draggable="true" data-type="server3">Server 3</div>
+        <div class="node-item" draggable="true" data-type="attacker">Attacker</div>
+        
+        <div class="section-title">Connections</div>
+    
+        <div class="arrow-item" draggable="true" data-type="arrow">
+          <div style="font-size: 30px; color: #333; text-align: center;">
+            &#8594; 
+        </div>
+        </div>
+
+        <div class="section-title">Controls</div>
+        
+        <button onclick="startAttack()" class="control-button">Start Attack</button>
+        
+        <button onclick="isAttacking = false" class="control-button">Stop Attack</button>
+    </div>
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script src="jsfile.js"></script>
+</body>
+</html>
+
+
