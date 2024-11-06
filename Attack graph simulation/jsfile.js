@@ -115,20 +115,41 @@ function colorConnectionsSequentially() {
     let currentNode = state.nodes.find(node => node.type === 'attacker');
     let delay = 0;
     
-    while (currentNode && currentNode.type !== 'database') {
+    while (currentNode) {
         const nextConnection = state.connections.find(conn => conn.start === currentNode);
         if (nextConnection) {
             setTimeout(() => {
                 nextConnection.color = '#ff0000';
                 nextConnection.end.color = '#ff0000';
+                                if (nextConnection.end.type === 'database') {
+                    console.log('%c Database Hacked! WOOOO! ', 'background: #ff0000; color: white; font-size: 15px;');
+                }
+                
                 draw();
             }, delay);
             currentNode = nextConnection.end;
-            delay += 1000; // 1second between kel connection
+            delay += 1000;
         } else {
             break;
         }
     }
+
+}
+
+function stopAttack() {
+    state.isAttacking = false;
+    
+    state.nodes.forEach(node => {
+        node.color = '#fff';
+    });
+    
+    state.connections.forEach(conn => {
+        conn.color = '#999';
+    });
+    
+    console.log('%c Boooo attack stopped :(', 'background: #40DA5F; color: white; font-size: 15px;');
+    
+    draw();
 }
 
 
